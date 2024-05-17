@@ -1,0 +1,26 @@
+{
+    "name": "chatbot",
+    "version": "1.0.0",
+    "description": "Chatbot powered by ChatGPT",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/tristansze/Chatbot.git"
+    },
+    "author": "Tristan Sze",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/tristansze/Chatbot/issues"
+    },
+    "homepage": "https://github.com/tristansze/Chatbot#readme",
+    "dependencies": {
+        "colors": "^1.4.0",
+        "dotenv": "^16.4.5",
+        "openai": "^4.43.0",
+        "readline-sync": "^1.4.10"
+    }
+}
