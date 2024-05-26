@@ -6,7 +6,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 45px;
+    padding-top: 32px;
     z-index: 2;
 }
 
@@ -31,9 +31,11 @@
 }
 
 .menuItems a {
+  font-weight: bold;
   font-size: 25px;
   color: var(--color-text);
   text-decoration: none;
+  padding-right: 25px;
 }
 
 

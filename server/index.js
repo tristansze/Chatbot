@@ -1,26 +1,51 @@
-import { WebSocketServer } from 'ws';
-import http from 'http';
-import { v4 as uuidv4 } from 'uuid';
+import openai from './config/open-ai.js';
+import readlineSync from 'readline-sync';
+import colors from 'colors';
 
-// Spinning the HTTP server and the WebSocket server.
-const server = http.createServer();
-const wsServer = new WebSocketServer({ server });
-const port = 8000;
-server.listen(port, () => {
-  console.log(`WebSocket server is running on port ${port}`);
-});
+async function main() {
+    
+    console.log(colors.bold.green('Welcome! My name is Bumper, your personal chat assistant! How may I help you today?'));
+    const chatHistory = []; // To store the entire conversation history
 
-// Maintaining all active connections in this object
-const clients = {};
-
-// A new client connection request received
-wsServer.on('connection', (connection) => {
-  // Generate a unique code for every user
-  const userId = uuidv4();
-  console.log(`Received a new connection.`);
-
-  // Store the new connection and handle messages
-  clients[userId] = connection;
-  console.log(`${userId} connected.`);
-});
-
+    const initialMessage = {
+        role: "system",
+        content: "You are named Bumper, a smart study bot designed to help educate students. Answer every question as if you are a teacher, and refuse to answer anything that does not relate to school in some sense. This means you can only answer questions related to a subject that can be taught in school, limited to Physics, Math, Science, English, Coding, or Engineering related questions"
+    };
+    chatHistory.push(["system", initialMessage.content]);
+  
+    while (true) {
+      const userInput = readlineSync.question(colors.yellow('You: '));
+  
+      try {
+          // Construct messages by iterating over conversation history
+          const messages = chatHistory.map(([role, content]) => ({ role, content }))
+  
+          // Add latest user input
+          messages.push({ role: 'user', content: userInput }); 
+  
+          // Call the API with the user input
+          const completion = await openai.chat.completions.create({
+              model: 'gpt-3.5-turbo',
+              messages: messages,
+          });
+          
+          const completionText = completion.data.chices[0].message.content;
+  
+          if (userInput.toLowercase == 'exit') {  
+              console.log(colors.green('Bot: ') + completionText);
+              return;
+          }
+  
+          console.log(colors.green('Bot: ') + completionText);
+  
+          // Update array history with input and assistant response
+          chatHistory.push(['user', userInput]);
+          chatHistory.push(['assistant', completionText]);
+  
+      } catch (error) {
+          console.error(colors.red(error));
+      }
+    }
+  }
+  
+  main();

@@ -1,23 +1,22 @@
 import styles from "./App.module.css";
 import { Navbar } from "./components/navbar/navbar";
 import { Hero } from "./components/hero/hero";
+import { Room } from "./components/chatroom/chatroom";
+import { Youtube } from "./components/youtube/youtube";
+import { Footer } from "./components/footer/footer";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import React from 'react';
-import useWebSocket from 'react-use-websocket';
-
-const WS_URL = 'ws://127.0.0.1:8000';
 
 function App() {
-  useWebSocket(WS_URL, {
-    onOpen: () => {
-      console.log('WebSocket connection established.');
-    }
-  });
-
   return (
-    <div className={styles.app}> 
+    <div className={styles.app}>
       <Navbar />
-      <Hero />
+      <Routes>
+        <Route path="/" element={<Hero />} />
+        <Route path="/chatroom" element={<Room />} />
+        <Route path="/youtube" element={<Youtube />} />
+      </Routes>
+      <Footer />
     </div>
   );
 };
