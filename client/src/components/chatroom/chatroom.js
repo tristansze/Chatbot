@@ -37,7 +37,7 @@ export const Room = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:2000/chatroom', {
+      const response = await fetch('http://localhost:3000/chatroom', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

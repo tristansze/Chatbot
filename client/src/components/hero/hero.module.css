@@ -44,6 +44,7 @@
 }
 
 .button {
+    display: flex;
     width: 10%;
     height: 50px;
     color: white;
@@ -51,4 +52,7 @@
     font-family: var(--font-roboto);
     background-color: orange;
     margin-left: 150px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
 }

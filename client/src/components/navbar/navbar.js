@@ -8,7 +8,9 @@ export const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     return (
         <nav className={styles.navbar}>
-            <img src ={Title} alt="Logo" className={styles.title}></img>
+            <Link to="/" className={styles.title}>
+                <img src={Title} alt="Logo" className={styles.title} />
+            </Link>
             <div className={styles.menu}>
                 <img className={styles.menuBtn}
                 src={
@@ -26,9 +28,6 @@ export const Navbar = () => {
                     </li>
                     <li>
                         <Link to="/youtube">Video Linker</Link>
-                    </li>
-                    <li>
-                        <Link to="/">Home</Link>
                     </li>
                 </ul>
             </div>

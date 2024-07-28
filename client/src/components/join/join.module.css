@@ -1,0 +1,84 @@
+@import "../../vars.module.css";
+
+.container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1;
+    margin: 15% auto; /* Center horizontally and keep the top margin */
+    border: 2px solid white;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 50%;
+    padding: 60px; /* Adjusted to ensure padding is uniform */
+}
+
+.header {
+    padding-left: 0px;
+    color: white;
+    font-size: 32px;
+    font-family: var(--font-roboto);
+    margin-top: 50px;
+    margin-right: 20px;
+}
+
+.robotImg {
+    width: 100px;
+    height: auto;
+    margin: 20 0px;
+}
+
+.row {
+    justify-content: space-between;
+    display: flex;
+    align-items: left;
+}
+
+.textbox {
+    margin-bottom: 25px;
+    width: auto;
+}
+
+.textbox1 {
+    width: 300px; /* Specific width for the first textbox */
+}
+
+.textbox2 {
+    width: 500px; /* Specific width for the second textbox */
+}
+
+.textbox input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.textbox input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.btn {
+    color: white;
+    background-color: orange;
+    display: flex;
+    flex-direction: row;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: var(--font-roboto);
+    height: 50px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 25%;
+    margin-left: 290px;
+    padding-left: 35px;
+}
+
+.btn:hover {
+    background-color: #ff8c00;
+}
